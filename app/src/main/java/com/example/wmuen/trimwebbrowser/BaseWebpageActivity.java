@@ -73,12 +73,13 @@ public abstract class BaseWebpageActivity extends AppCompatActivity {
         historyHolder.setArrayList(historyHolder.getArrayListFromJsonArray());
 
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToChooseWebView(urlString);
-            }
-        });
+        floatingActionButton.setEnabled(false);
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switchToChooseWebView(urlString);
+//            }
+//        });
 
         handleIncomingUrls(savedInstanceState);
     }

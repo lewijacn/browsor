@@ -44,12 +44,13 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToChooseWebView();
-            }
-        });
+        floatingActionButton.setEnabled(false);
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switchToChooseWebView();
+//            }
+//        });
 
         recyclerView = (RecyclerView) findViewById(R.id.historyRecyclerView);
         recyclerView.setHasFixedSize(false);

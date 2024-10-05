@@ -76,8 +76,8 @@ public class SettingsActivity extends AppCompatActivity {
             zoomSwitch.setEnabled(false);
         } else {
             textOrFormat.check(R.id.allowFormatting);
-            imageSwitch.setEnabled(true);
-            scriptSwitch.setEnabled(true);
+            imageSwitch.setEnabled(false);
+            scriptSwitch.setEnabled(false);
             zoomSwitch.setEnabled(true);
         }
 
@@ -94,29 +94,33 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
                     case R.id.allowFormatting:
                         settings.setTextOnly(false);
-                        imageSwitch.setEnabled(true);
-                        scriptSwitch.setEnabled(true);
+                        imageSwitch.setEnabled(false);
+                        scriptSwitch.setEnabled(false);
                         zoomSwitch.setEnabled(true);
                         break;
                 }
                 saveTextOnlyToSharedPreferences(settings);
             }
         });
+        settings.setEnableImages(false);
+        saveEnableImagesToSharedPreferences(settings);
+        settings.setEnableScripts(false);
+        saveEnableScriptsToSharedPreferences(settings);
 
-        imageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                settings.setEnableImages(isChecked);
-                saveEnableImagesToSharedPreferences(settings);
-            }
-        });
-        scriptSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                settings.setEnableScripts(isChecked);
-                saveEnableScriptsToSharedPreferences(settings);
-            }
-        });
+//        imageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                settings.setEnableImages(isChecked);
+//                saveEnableImagesToSharedPreferences(settings);
+//            }
+//        });
+//        scriptSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                settings.setEnableScripts(isChecked);
+//                saveEnableScriptsToSharedPreferences(settings);
+//            }
+//        });
         zoomSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

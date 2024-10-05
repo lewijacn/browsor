@@ -40,12 +40,13 @@ public class BookmarksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bookmarks);
 
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToChooseWebView();
-            }
-        });
+        floatingActionButton.setEnabled(false);
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switchToChooseWebView();
+//            }
+//        });
 
         recyclerView = (RecyclerView) findViewById(R.id.bookmarkRecyclerView);
         recyclerView.setHasFixedSize(false);

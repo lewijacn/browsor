@@ -101,6 +101,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_baseline_text_format_24px"
         android:tint="@color/fabIconColor"
+        android:visibility="invisible"
         app:layout_anchor="@id/siteContentNestedScrollView"
         app:layout_anchorGravity="bottom|end" />
 
