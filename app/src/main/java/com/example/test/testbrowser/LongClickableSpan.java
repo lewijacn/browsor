@@ -1,4 +1,4 @@
-package com.example.wmuen.testbrowser;
+package com.example.test.testbrowser;
 
 import android.text.style.ClickableSpan;
 import android.view.View;

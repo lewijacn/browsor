@@ -1,4 +1,4 @@
-package com.example.wmuen.testbrowser;
+package com.example.test.testbrowser;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

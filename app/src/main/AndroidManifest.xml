@@ -15,7 +15,7 @@
         android:theme="@style/AppThemeDay"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.wmuen.testbrowser.StartPageActivity"
+            android:name="com.example.test.testbrowser.StartPageActivity"
             android:label="@string/app_name"
             android:exported="true"
             android:theme="@style/AppThemeDay.NoActionBar">
@@ -42,12 +42,12 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.wmuen.testbrowser.WebviewActivity" />
-        <activity android:name="com.example.wmuen.testbrowser.ChooseWebviewActivity" />
-        <activity android:name="com.example.wmuen.testbrowser.SettingsActivity" />
-        <activity android:name="com.example.wmuen.testbrowser.BookmarksActivity" />
-        <activity android:name="com.example.wmuen.testbrowser.HistoryActivity" />
-        <activity android:name="com.example.wmuen.testbrowser.MainActivity" />
+        <activity android:name="com.example.test.testbrowser.WebviewActivity" />
+        <activity android:name="com.example.test.testbrowser.ChooseWebviewActivity" />
+        <activity android:name="com.example.test.testbrowser.SettingsActivity" />
+        <activity android:name="com.example.test.testbrowser.BookmarksActivity" />
+        <activity android:name="com.example.test.testbrowser.HistoryActivity" />
+        <activity android:name="com.example.test.testbrowser.MainActivity" />
     </application>
 
 </manifest>

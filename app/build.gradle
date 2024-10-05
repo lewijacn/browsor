@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.trim.web.browser"
+        applicationId "com.test.test.browser"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 34
@@ -16,7 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'com.example.wmuen.testbrowser'
+    namespace 'com.example.test.testbrowser'
 }
 
 dependencies {

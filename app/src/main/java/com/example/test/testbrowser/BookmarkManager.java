@@ -1,4 +1,4 @@
-package com.example.wmuen.testbrowser;
+package com.example.test.testbrowser;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,11 +17,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class HistoryManager {
+public class BookmarkManager {
 
     private Activity callingActivity;
 
-    public HistoryManager(Activity activity) {
+    public BookmarkManager(Activity activity) {
         this.callingActivity = activity;
     }
 
@@ -64,17 +64,19 @@ public class HistoryManager {
         JSONArray jsonArray;
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = callingActivity.getApplicationContext().openFileInput("History");
+            fileInputStream = callingActivity.getApplicationContext().openFileInput("Bookmarks");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
             StringBuilder stringBuilder = new StringBuilder();
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
                 stringBuilder.append(line);
             }
+
             jsonArray = new JSONArray(stringBuilder.toString());
             return jsonArray;
         } catch (FileNotFoundException e) {
-            createFile("History");
+            createFile("Bookmarks");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +86,7 @@ public class HistoryManager {
         return new JSONArray();
     }
 
-    public JSONArray getJsonArrayFromHistoryArray(ArrayList<JSONObject> arrayList) {
+    public JSONArray getJsonArrayFromBookmarksArray(ArrayList<JSONObject> arrayList) {
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < arrayList.size(); i++) {
             jsonArray.put(arrayList.get(i));
@@ -92,27 +94,33 @@ public class HistoryManager {
         return jsonArray;
     }
 
-    public void addToHistory(String url, String title, Boolean isUsingTopMenu) {
+    public void addToBookmarks(String url, String title, Boolean isUsingTopMenu) {
         if (url != "" && url != null) {
-            HistoryHolder historyHolder = HistoryHolder.getInstance();
-            JSONArray jsonArray = historyHolder.getJsonArray();
+            BookmarksHolder bookmarksHolder = BookmarksHolder.getInstance();
+            JSONArray jsonArray = bookmarksHolder.getJsonArray();
             JSONObject jsonObject = new JSONObject();
-            Boolean historyExists = false;
+            Boolean bookmarkExists = false;
             try {
                 jsonObject.put("url", url);
                 jsonObject.put("title", title);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     if (jsonArray.getJSONObject(i).getString("url").equals(jsonObject.getString("url"))) {
-                        historyExists = true;
+                        bookmarkExists = true;
+                        if (isUsingTopMenu == true) {
+                            removeFromBookmarks(i, url);
+                        } else {
+                            Toast.makeText(callingActivity, "Already bookmarked " + url + ".", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     }
                 }
-                if (historyExists == false) {
+                if (bookmarkExists == false) {
                     jsonArray.put(jsonObject);
-                    rewriteFile("History", jsonArray);
-                    historyHolder.setJsonArray(jsonArray);
-                    ArrayList<JSONObject> arrayList = historyHolder.getArrayListFromJsonArray();
-                    historyHolder.setArrayList(arrayList);
+                    rewriteFile("Bookmarks", jsonArray);
+                    bookmarksHolder.setJsonArray(jsonArray);
+                    ArrayList<JSONObject> arrayList = bookmarksHolder.getArrayListFromJsonArray();
+                    bookmarksHolder.setArrayList(arrayList);
+                    Toast.makeText(callingActivity, "Bookmarked " + url + ".", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -120,15 +128,45 @@ public class HistoryManager {
         }
     }
 
-    public void removeFromHistory(int index, String url) {
-        HistoryHolder historyHolder = HistoryHolder.getInstance();
-        JSONArray jsonArray = historyHolder.getJsonArray();
+    public void updateBookmarkTitle(String url, String title) {
+        if (url != "" && url != null) {
+            BookmarksHolder bookmarksHolder = BookmarksHolder.getInstance();
+            JSONArray jsonArray = bookmarksHolder.getJsonArray();
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("url", url);
+                jsonObject.put("title", title);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    if (jsonArray.getJSONObject(i).getString("url").equals(jsonObject.getString("url"))) {
+                        if (title.equals(jsonArray.getJSONObject(i).getString("title"))) {
+                            //do nothing
+                        } else {
+                            //update the bookmark
+                            jsonArray.getJSONObject(i).put("title", title);
+                            rewriteFile("Bookmarks", jsonArray);
+                            bookmarksHolder.setJsonArray(jsonArray);
+                            ArrayList<JSONObject> arrayList = bookmarksHolder.getArrayListFromJsonArray();
+                            bookmarksHolder.setArrayList(arrayList);
+                        }
+                        break;
+                    } else {
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void removeFromBookmarks(int index, String url) {
+        BookmarksHolder bookmarksHolder = BookmarksHolder.getInstance();
+        JSONArray jsonArray = bookmarksHolder.getJsonArray();
         jsonArray.remove(index);
-        rewriteFile("History", jsonArray);
-        historyHolder.setJsonArray(jsonArray);
-        ArrayList<JSONObject> arrayList = historyHolder.getArrayListFromJsonArray();
-        historyHolder.setArrayList(arrayList);
-        Toast.makeText(callingActivity, "Removed " + url + " from history.", Toast.LENGTH_SHORT).show();
+        rewriteFile("Bookmarks", jsonArray);
+        bookmarksHolder.setJsonArray(jsonArray);
+        ArrayList<JSONObject> arrayList = bookmarksHolder.getArrayListFromJsonArray();
+        bookmarksHolder.setArrayList(arrayList);
+        Toast.makeText(callingActivity, "Removed " + url + " from bookmarks.", Toast.LENGTH_SHORT).show();
     }
 
 }
