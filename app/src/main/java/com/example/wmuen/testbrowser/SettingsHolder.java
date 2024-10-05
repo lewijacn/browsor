@@ -1,4 +1,4 @@
-package com.example.wmuen.trimwebbrowser;
+package com.example.wmuen.testbrowser;
 
 import android.graphics.Typeface;
 import android.support.design.widget.CoordinatorLayout;

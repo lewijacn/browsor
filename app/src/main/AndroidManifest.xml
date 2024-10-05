@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.wmuen.trimwebbrowser">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -16,7 +15,7 @@
         android:theme="@style/AppThemeDay"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.wmuen.trimwebbrowser.StartPageActivity"
+            android:name="com.example.wmuen.testbrowser.StartPageActivity"
             android:label="@string/app_name"
             android:exported="true"
             android:theme="@style/AppThemeDay.NoActionBar">
@@ -43,12 +42,12 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.wmuen.trimwebbrowser.WebviewActivity" />
-        <activity android:name="com.example.wmuen.trimwebbrowser.ChooseWebviewActivity" />
-        <activity android:name="com.example.wmuen.trimwebbrowser.SettingsActivity" />
-        <activity android:name="com.example.wmuen.trimwebbrowser.BookmarksActivity" />
-        <activity android:name="com.example.wmuen.trimwebbrowser.HistoryActivity" />
-        <activity android:name="com.example.wmuen.trimwebbrowser.MainActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.WebviewActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.ChooseWebviewActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.SettingsActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.BookmarksActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.HistoryActivity" />
+        <activity android:name="com.example.wmuen.testbrowser.MainActivity" />
     </application>
 
 </manifest>

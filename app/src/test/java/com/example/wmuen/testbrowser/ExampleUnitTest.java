@@ -1,4 +1,4 @@
-package com.example.wmuen.trimwebbrowser;
+package com.example.wmuen.testbrowser;
 
 import org.junit.Test;
 

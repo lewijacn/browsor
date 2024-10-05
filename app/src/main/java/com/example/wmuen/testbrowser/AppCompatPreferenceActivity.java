@@ -1,4 +1,4 @@
-package com.example.wmuen.trimwebbrowser;
+package com.example.wmuen.testbrowser;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.wmuen.trimwebbrowser;
+package com.example.wmuen.testbrowser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -6,20 +6,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class BookmarksHolder {
-    private static BookmarksHolder instance = null;
+public class HistoryHolder {
+    private static HistoryHolder instance = null;
 
     private JSONArray jsonArray;
     private String[] list;
     private ArrayList<JSONObject> arrayList;
 
-    protected BookmarksHolder() {
+    protected HistoryHolder() {
         //this is here to block instantiation
     }
 
-    public static BookmarksHolder getInstance() {
+    public static HistoryHolder getInstance() {
         if (instance == null) {
-            instance = new BookmarksHolder();
+            instance = new HistoryHolder();
         }
         return instance;
     }
@@ -44,14 +44,16 @@ public class BookmarksHolder {
         return this.arrayList;
     }
 
+    //This is going to get the LAST five items on the list
     public ArrayList<JSONObject> getShortenedArrayList() {
         ArrayList<JSONObject> shortArrayList = new ArrayList<JSONObject>();
-        if (arrayList.size() >= 5) {
-            for (int i = 0; i < 5; i++) {
+        int size = arrayList.size();
+        if (size >= 5) {
+            for (int i = size - 1; i >= size - 5; i--) {
                 shortArrayList.add(arrayList.get(i));
             }
         } else {
-            for (int i = 0; i < arrayList.size(); i++) {
+            for (int i = size - 1; i >= 0; i--) {
                 shortArrayList.add(arrayList.get(i));
             }
         }

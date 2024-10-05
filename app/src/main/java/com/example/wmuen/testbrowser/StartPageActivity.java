@@ -1,4 +1,4 @@
-package com.example.wmuen.trimwebbrowser;
+package com.example.wmuen.testbrowser;
 
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;

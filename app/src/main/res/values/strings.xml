@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Browsor</string>
+    <string name="app_name">Browzor</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Bookmarks</string>
     <string name="title_notifications">Settings</string>
